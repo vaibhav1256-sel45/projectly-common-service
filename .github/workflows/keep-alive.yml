@@ -1,0 +1,23 @@
+name: Keep Render services awake
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping all Projectly backend services
+        run: |
+          for url in \
+            https://projectly-auth-service.onrender.com/health \
+            https://projectly-user-service.onrender.com/health \
+            https://projectly-project-service.onrender.com/health \
+            https://projectly-task-service.onrender.com/health \
+            https://projectly-common-service.onrender.com/health \
+          ; do
+            echo "pinging $url"
+            curl -sf -o /dev/null -w "  -> %{http_code}\n" "$url" || echo "  -> failed (service may be waking up)"
+          done
