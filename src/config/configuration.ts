@@ -6,9 +6,10 @@ export default () => ({
     url: process.env.RABBITMQ_URL ?? 'amqp://localhost:5672',
   },
 
-  resend: {
-    apiKey: process.env.RESEND_API_KEY,
-    from: process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev',
+  brevo: {
+    apiKey: process.env.BREVO_API_KEY,
+    fromEmail: process.env.BREVO_FROM_EMAIL,
+    fromName: process.env.BREVO_FROM_NAME ?? 'Projectly',
   },
 
   // where the buttons in the emails point to
