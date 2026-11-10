@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package common;
+
+service CommonService {
+  rpc GenerateViewUrl(GenerateViewUrlRequest) returns (GenerateViewUrlResponse);
+  rpc DeleteObject(DeleteObjectRequest) returns (DeleteObjectResponse);
+}
+
+message GenerateViewUrlRequest {
+  string key = 1;
+}
+
+message GenerateViewUrlResponse {
+  string view_url = 1;
+}
+
+message DeleteObjectRequest {
+  string key = 1;
+}
+
+message DeleteObjectResponse {
+  bool deleted = 1;
+}
