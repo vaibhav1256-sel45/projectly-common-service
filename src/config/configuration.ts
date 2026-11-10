@@ -6,10 +6,9 @@ export default () => ({
     url: process.env.RABBITMQ_URL ?? 'amqp://localhost:5672',
   },
 
-  email: {
-    user: process.env.EMAIL_USER,
-    password: process.env.EMAIL_PASSWORD,
-    dryRun: process.env.MAIL_DRY_RUN === 'true',
+  resend: {
+    apiKey: process.env.RESEND_API_KEY,
+    from: process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev',
   },
 
   // where the buttons in the emails point to
